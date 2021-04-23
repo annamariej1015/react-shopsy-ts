@@ -1,17 +1,12 @@
-import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
+import AppRoutes from './routers/AppRoutes';
 
-import './App.css';
-
-function App() {
+const App =()=> {
   return (
-    <div className="container">
-      <div className="row text-center">
-        <div className="col">
-          <h2>This is my app!</h2>
-        </div>
-      </div>
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
-}
+};
 
 export default App;
