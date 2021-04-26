@@ -1,15 +1,31 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
-const ProductPage =()=>{
-    return(
-        <div id='product'>
-            <div className="row text-center">
-                <div className="col">
-                    <h2>Product Page!</h2>
-                </div>
+const HomePage = () => {
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    const fetchProducts = async (): Promise<void> => {
+        try {
+        let prods = await (
+            await fetch('https://fakestoreapi.com/products')
+        ).json();
+
+        setProducts(prods);
+        } catch (e) {
+        console.log(e);
+        }
+    };
+    return (
+        <div id='home'>
+        <div className='row text-center'>
+            <div className='col'>
+            <h2>Home Page!</h2>
             </div>
         </div>
-    )
-};
-
-export default ProductPage;
+        </div>
+    );
+    };
+    export default HomePage;
